@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heera Store - House of Readymade</title>
+<style>
+  /* CSS YAHAN HAI: Website ka design, colors aur layout */
+  :root {
+    --primary: #900c3f;
+    --dark: #1a1a24;
+    --light-gray: #f4f4f4;
+    --form-bg: #154360;
+    --text-dark: #333;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+  body { background-color: #fff; color: var(--text-dark); line-height: 1.6; }
+  
+  /* Navbar */
+  nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #ddd; }
+  .logo-container { display: flex; align-items: center; gap: 10px; }
+  .logo-icon { background: var(--primary); color: white; padding: 4px 8px; font-weight: bold; border-radius: 4px; }
+  .logo-text { font-weight: bold; font-size: 1.2rem; }
+  .logo-sub { font-size: 0.7rem; color: #666; letter-spacing: 1px; text-transform: uppercase; }
+
+  /* Sections & Text */
+  section { padding: 40px 20px; }
+  .text-center { text-align: center; }
+  h1, h2 { font-family: 'Times New Roman', serif; margin-bottom: 15px; color: var(--dark); }
+  .hindi-text { font-size: 1.1rem; font-weight: bold; color: var(--primary); margin: 10px 0; }
+  
+  /* Buttons */
+  .btn { display: inline-block; padding: 12px 24px; color: white; text-decoration: none; border-radius: 5px; margin-top: 15px; width: 100%; text-align: center; font-weight: bold; border: none; cursor: pointer; }
+  .btn-primary { background: var(--primary); }
+  .btn-dark { background: var(--dark); }
+
+  /* Stats Grid */
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+  .stat-card { text-align: center; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
+  .stat-card h3 { color: var(--dark); font-size: 1.8rem; margin-bottom: 5px; }
+  .stat-card p { font-size: 0.85rem; color: #555; }
+
+  /* Catalog Grid */
+  .catalog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+  .cat-card { background: #333; color: white; padding: 40px 10px; border-radius: 8px; text-align: center; font-weight: bold; }
+  
+  /* AI Catalog Form */
+  .ai-section { background: var(--dark); color: white; padding: 40px 20px; }
+  .ai-section h2 { color: white; }
+  .form-group { margin-bottom: 20px; text-align: left; }
+  .form-group label { display: block; font-size: 0.8rem; margin-bottom: 8px; color: #aaa; letter-spacing: 1px; }
+  .form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #444; background: #222; color: white; }
+
+  /* Testimonials */
+  .testimonial-card { background: var(--light-gray); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--primary); }
+
+  /* Wholesale Inquiry */
+  .inquiry-section { background: var(--form-bg); color: white; }
+  .inquiry-section h2 { color: white; }
+  .inquiry-section input, .inquiry-section select, .inquiry-section textarea { background: rgba(255,255,255
