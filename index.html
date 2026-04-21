@@ -1,221 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heera Store - House of Readymade</title>
-<style>
-  /* CSS YAHAN HAI: Website ka design, colors aur layout */
-  :root {
-    --primary: #900c3f;
-    --dark: #1a1a24;
-    --light-gray: #f4f4f4;
-    --form-bg: #154360;
-    --text-dark: #333;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-  body { background-color: #fff; color: var(--text-dark); line-height: 1.6; }
-  
-  /* Navbar */
-  nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; border-bottom: 1px solid #ddd; }
-  .logo-container { display: flex; align-items: center; gap: 10px; }
-  .logo-icon { background: var(--primary); color: white; padding: 4px 8px; font-weight: bold; border-radius: 4px; }
-  .logo-text { font-weight: bold; font-size: 1.2rem; }
-  .logo-sub { font-size: 0.7rem; color: #666; letter-spacing: 1px; text-transform: uppercase; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heera Store | Wholesale Readymade</title>
+    <style>
+        :root {
+            --primary: #900c3f;
+            --dark: #1a1a24;
+            --light: #f4f4f4;
+            --accent: #154360;
+            --text: #333;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { color: var(--text); line-height: 1.6; }
+        
+        /* Navigation */
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; border-bottom: 1px solid #ddd; background: #fff; position: sticky; top: 0; z-index: 100; }
+        .logo { display: flex; align-items: center; gap: 10px; }
+        .logo-box { background: var(--primary); color: #fff; padding: 5px 10px; font-weight: bold; border-radius: 4px; }
+        .logo-txt b { display: block; font-size: 1.2rem; text-transform: uppercase; }
+        .logo-txt span { font-size: 0.65rem; color: #666; letter-spacing: 1.5px; }
 
-  /* Sections & Text */
-  section { padding: 40px 20px; }
-  .text-center { text-align: center; }
-  h1, h2 { font-family: 'Times New Roman', serif; margin-bottom: 15px; color: var(--dark); }
-  .hindi-text { font-size: 1.1rem; font-weight: bold; color: var(--primary); margin: 10px 0; }
-  
-  /* Buttons */
-  .btn { display: inline-block; padding: 12px 24px; color: white; text-decoration: none; border-radius: 5px; margin-top: 15px; width: 100%; text-align: center; font-weight: bold; border: none; cursor: pointer; }
-  .btn-primary { background: var(--primary); }
-  .btn-dark { background: var(--dark); }
+        /* General Layout */
+        section { padding: 3rem 5%; text-align: center; }
+        h1, h2 { font-family: serif; margin-bottom: 1rem; color: var(--dark); }
+        .hindi { font-size: 1.2rem; font-weight: bold; color: var(--primary); margin: 1rem 0; }
+        .sub { font-size: 0.75rem; color: #666; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 0.5rem; }
+        
+        /* Buttons */
+        .btn { display: inline-block; padding: 12px 30px; text-decoration: none; border-radius: 4px; font-weight: bold; transition: 0.3s; width: 100%; max-width: 300px; cursor: pointer; border: none; }
+        .btn-dark { background: var(--dark); color: #fff; }
+        .btn-pri { background: var(--primary); color: #fff; }
 
-  /* Stats Grid */
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-  .stat-card { text-align: center; padding: 15px; border: 1px solid #ddd; border-radius: 8px; }
-  .stat-card h3 { color: var(--dark); font-size: 1.8rem; margin-bottom: 5px; }
-  .stat-card p { font-size: 0.85rem; color: #555; }
+        /* Grids */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 2rem; }
+        .card { padding: 1.5rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; }
+        .card h3 { font-size: 2rem; color: var(--dark); }
+        .card p { font-size: 0.8rem; color: #666; }
 
-  /* Catalog Grid */
-  .catalog-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-  .cat-card { background: #333; color: white; padding: 40px 10px; border-radius: 8px; text-align: center; font-weight: bold; }
-  
-  /* AI Catalog Form */
-  .ai-section { background: var(--dark); color: white; padding: 40px 20px; }
-  .ai-section h2 { color: white; }
-  .form-group { margin-bottom: 20px; text-align: left; }
-  .form-group label { display: block; font-size: 0.8rem; margin-bottom: 8px; color: #aaa; letter-spacing: 1px; }
-  .form-group input, .form-group select { width: 100%; padding: 12px; border-radius: 5px; border: 1px solid #444; background: #222; color: white; }
+        .cat-item { background: #333; color: #fff; padding: 3rem 1rem; border-radius: 8px; font-weight: bold; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+        .cat-item span { font-size: 0.8rem; font-weight: normal; opacity: 0.8; }
 
-  /* Testimonials */
-  .testimonial-card { background: var(--light-gray); padding: 20px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid var(--primary); }
+        /* AI & Forms */
+        .dark-sec { background: var(--dark); color: #fff; }
+        .dark-sec h2 { color: #fff; }
+        .form-group { text-align: left; margin-bottom: 1.2rem; max-width: 500px; margin-inline: auto; }
+        .form-group label { display: block; font-size: 0.7rem; color: #aaa; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 12px; border-radius: 4px; border: 1px solid #444; background: #222; color: #fff; }
 
-  /* Wholesale Inquiry */
-  .inquiry-section { background: var(--form-bg); color: white; }
-  .inquiry-section h2 { color: white; }
-  .inquiry-section input, .inquiry-section select, .inquiry-section textarea { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; }
-  
-  /* Footer */
-  footer { background: #111; color: #ccc; padding: 40px 20px; font-size: 0.9rem; }
-  footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 12px; }
-</style>
+        /* Feedback */
+        .quote { background: var(--light); padding: 1.5rem; border-radius: 8px; border-left: 5px solid var(--primary); margin-bottom: 1rem; text-align: left; }
+
+        /* Footer */
+        footer { background: #111; color: #888; padding: 3rem 5%; font-size: 0.9rem; }
+        footer a { color: #ccc; text-decoration: none; display: block; margin-bottom: 0.8rem; }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <div class="logo-container">
-      <div class="logo-icon">ह</div>
-      <div>
-        <div class="logo-text">Heera Store</div>
-        <div class="logo-sub">HOUSE OF READYMADE</div>
-      </div>
-    </div>
-    <div style="font-size: 1.5rem;">&#9776;</div>
-  </nav>
+    <nav>
+        <div class="logo">
+            <div class="logo-box">ह</div>
+            <div class="logo-txt"><b>Heera Store</b><span>HOUSE OF READYMADE</span></div>
+        </div>
+        <div style="cursor:pointer; font-size: 1.5rem;">&#9776;</div>
+    </nav>
 
-  <section class="text-center">
-    <div class="logo-sub">EST. 1987 • WHOLESALE ACROSS INDIA</div>
-    <br>
-    <h1>The House of Readymade</h1>
-    <p class="hindi-text">समय बीतता गया। विश्वास बढ़ता गया।।</p>
-    <p style="color: #555;">Three generations of trust in wholesale readymade garments. From festive sarees to everyday menswear - stocked in bulk, shipped to retailers in 480+ cities.</p>
-    <a href="#inquiry" class="btn btn-dark">Start Wholesale Inquiry</a>
-  </section>
+    <section>
+        <span class="sub">EST. 1987 • WHOLESALE INDIA</span>
+        <h1>The House of Readymade</h1>
+        <p class="hindi">समय बीतता गया। विश्वास बढ़ता गया।।</p>
+        <p style="max-width: 600px; margin: 0 auto 1.5rem;">Three generations of trust. Festive sarees to everyday menswear, shipped to 480+ cities.</p>
+        <a href="#inquiry" class="btn btn-dark">Start Wholesale Inquiry</a>
+    </section>
 
-  <section class="text-center" style="background: var(--light-gray);">
-    <div class="logo-sub">OUR LEGACY</div>
-    <h2>Three generations.<br>One promise - trust woven into every fold.</h2>
-    <p style="color: #555;">Since 1987, Heera Store has supplied wholesale readymade garments to retailers across India.</p>
-    
-    <div class="stats-grid">
-      <div class="stat-card">
-        <h3>37+</h3>
-        <p>Years of Legacy<br>वर्षों का विश्वास</p>
-      </div>
-      <div class="stat-card">
-        <h3>8,500+</h3>
-        <p>SKUs in Stock<br>तैयार माल</p>
-      </div>
-      <div class="stat-card">
-        <h3>464+</h3>
-        <p>Cities Served<br>शहरों में उपस्थिति</p>
-      </div>
-      <div class="stat-card">
-        <h3>11,619+</h3>
-        <p>Happy Retailers<br>संतुष्ट व्यापारी</p>
-      </div>
-    </div>
-  </section>
+    <section style="background: var(--light);">
+        <span class="sub">OUR LEGACY</span>
+        <h2>Trust woven into every fold.</h2>
+        <div class="grid">
+            <div class="card"><h3>37+</h3><p>Years Legacy</p></div>
+            <div class="card"><h3>8.5k+</h3><p>SKUs Stocked</p></div>
+            <div class="card"><h3>460+</h3><p>Cities Served</p></div>
+            <div class="card"><h3>11k+</h3><p>Retailers</p></div>
+        </div>
+    </section>
 
-  <section>
-    <div class="logo-sub text-center">WHOLESALE CATALOG</div>
-    <h2 class="text-center">Every fabric, every fit stocked in bulk.</h2>
-    
-    <div class="catalog-grid">
-      <div class="cat-card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), #555;">
-        Men's Shirts<br><span style="font-size: 0.8rem; font-weight: normal;">पुरुषों की शर्ट</span>
-      </div>
-      <div class="cat-card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), #777;">
-        Sarees<br><span style="font-size: 0.8rem; font-weight: normal;">साड़ियाँ</span>
-      </div>
-      <div class="cat-card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), #666;">
-        Kids Wear<br><span style="font-size: 0.8rem; font-weight: normal;">बच्चों के कपड़े</span>
-      </div>
-      <div class="cat-card" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), #444;">
-        Festive Collection<br><span style="font-size: 0.8rem; font-weight: normal;">त्योहार संग्रह</span>
-      </div>
-    </div>
-  </section>
+    <section>
+        <span class="sub">CATALOG</span>
+        <h2>Bulk Stock Available</h2>
+        <div class="grid">
+            <div class="cat-item">Men's Shirts<br><span>पुरुषों की शर्ट</span></div>
+            <div class="cat-item">Sarees<br><span>साड़ियाँ</span></div>
+            <div class="cat-item">Kids Wear<br><span>बच्चों के कपड़े</span></div>
+            <div class="cat-item">Festive Edit<br><span>त्योहार संग्रह</span></div>
+        </div>
+    </section>
 
-  <section class="ai-section">
-    <div class="logo-sub" style="color: #aaa;">AI CATALOG STUDIO</div>
-    <h2>Generate a bespoke wholesale catalog card in seconds.</h2>
-    <p style="color: #ccc; margin-bottom: 25px;">Pick a category, a season, and any custom notes. Our AI writes the descriptor and drafts a catalog cover.</p>
-    
-    <div class="form-group">
-      <label>CATEGORY</label>
-      <select><option>Sarees</option><option>Men's Shirts</option></select>
-    </div>
-    <div class="form-group">
-      <label>SEASON</label>
-      <select><option>Festive</option><option>Summer</option></select>
-    </div>
-    <div class="form-group">
-      <label>NOTES (OPTIONAL)</label>
-      <input type="text" placeholder="e.g., Banarasi, pastel palette, bridal edit">
-    </div>
-    <button class="btn" style="background: #e67e22; color: white;">Generate Catalog</button>
-  </section>
+    <section class="dark-sec">
+        <span class="sub" style="color:#888">AI STUDIO</span>
+        <h2>Smart Catalog Generator</h2>
+        <div class="form-group">
+            <label>CATEGORY</label>
+            <select><option>Sarees</option><option>Men's Wear</option></select>
+        </div>
+        <div class="form-group">
+            <label>NOTES</label>
+            <input type="text" placeholder="e.g. Banarasi, Silk">
+        </div>
+        <button class="btn" style="background:#e67e22; color:#fff">Generate Now</button>
+    </section>
 
-  <section>
-    <div class="logo-sub">RETAILER VOICES</div>
-    <h2>12,000+ retailers.<br>One warehouse they trust.</h2>
-    
-    <div class="testimonial-card">
-      <p>"Heera Store ke catalogs hamesha time pe milte hain. Last Diwali hamne 220+ sarees sirf ek dispatch mein le liye."</p>
-      <br>
-      <strong>Rakesh Gupta</strong><br>
-      <span style="font-size: 0.8rem; color: #666;">Gupta Vastralay, Kanpur</span>
-    </div>
-    
-    <div class="testimonial-card">
-      <p>"Quality consistent hai aur MOQ flexible. Naye retailers ke liye perfect partner hai."</p>
-      <br>
-      <strong>Sameer Lala</strong><br>
-      <span style="font-size: 0.8rem; color: #666;">New Look Collection, Surat</span>
-    </div>
-  </section>
+    <section>
+        <span class="sub">RETAILER VOICES</span>
+        <div class="quote">
+            <p>"Best catalogs and timely delivery. Trusted partner for years."</p>
+            <small><b>- Rakesh Gupta</b>, Kanpur</small>
+        </div>
+    </section>
 
-  <section class="inquiry-section" id="inquiry">
-    <div class="logo-sub" style="color: #aaa;">WHOLESALE INQUIRY</div>
-    <h2>Become a Heera retailer.</h2>
-    <p style="margin-bottom: 25px;">Share your details and our wholesale desk will reach out within 24 hours.</p>
-    
-    <div class="form-group">
-      <label style="color: white;">BUSINESS NAME *</label>
-      <input type="text" placeholder="e.g. Gupta Vastralay">
-    </div>
-    <div class="form-group">
-      <label style="color: white;">CONTACT PERSON *</label>
-      <input type="text" placeholder="Your name">
-    </div>
-    <div class="form-group">
-      <label style="color: white;">PHONE *</label>
-      <input type="text" placeholder="+91 XXXXX XXXXX">
-    </div>
-    <div class="form-group">
-      <label style="color: white;">CITY *</label>
-      <input type="text" placeholder="e.g. Kanpur">
-    </div>
-    <button class="btn btn-primary">Send Wholesale Inquiry</button>
-  </section>
+    <section class="dark-sec" id="inquiry" style="background: var(--accent);">
+        <span class="sub" style="color:#fff; opacity:0.6">JOIN US</span>
+        <h2>Wholesale Inquiry</h2>
+        <div class="form-group"><input type="text" placeholder="Business Name"></div>
+        <div class="form-group"><input type="text" placeholder="Phone Number"></div>
+        <button class="btn btn-pri">Submit Details</button>
+    </section>
 
-  <footer>
-    <div class="logo-container" style="margin-bottom: 15px;">
-      <div class="logo-icon" style="background: var(--primary);">ह</div>
-      <div class="logo-text" style="color: white;">Heera Store</div>
-    </div>
-    <p>The House of Readymade — wholesale garments trusted since 1987.</p>
-    <p class="hindi-text" style="margin-bottom: 30px;">समय बीतता गया। विश्वास बढ़ता गया।।</p>
-    
-    <div class="logo-sub" style="color: #666; margin-bottom: 10px;">EXPLORE</div>
-    <a href="#">Legacy</a>
-    <a href="#">Categories</a>
-    <a href="#">AI Catalog</a>
-    <a href="#">Wholesale Inquiry</a>
-    <a href="#">Contact</a>
-    
-    <div class="logo-sub" style="color: #666; margin-top: 30px; margin-bottom: 10px;">WHOLESALE DESK</div>
-    <p>Cloth Market Lane, Old City<br>Indore, Madhya Pradesh 452002</p>
-    <br>
-    <p>+91 98765 43210<br>wholesale@heerastore.in</p>
-    <br><br>
-    <p style="font-size: 0.8rem; color: #666;">© 2026 Heera Store. All rights reserved.</p>
-  </footer>
+    <footer>
+        <div class="logo" style="margin-bottom: 1.5rem;">
+            <div class="logo-box">ह</div>
+            <b style="color:#fff; margin-left:10px">Heera Store</b>
+        </div>
+        <p class="hindi">समय बीतता गया। विश्वास बढ़ता गया।।</p>
+        <div class="grid" style="text-align:left; border-top:1px solid #222; padding-top:2rem;">
+            <div>
+                <a href="#">Legacy</a>
+                <a href="#">Categories</a>
+            </div>
+            <div>
+                <p>Old City, Indore, MP</p>
+                <p>wholesale@heerastore.in</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
